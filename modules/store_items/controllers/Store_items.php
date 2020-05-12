@@ -3,7 +3,13 @@ class Store_items extends Trongate {
 
     function display() {
         $url_string = $this->url->segment(3);
+        //var_dump($url_string);die(); 
+        // browser debug output: string(0) "" 
+        // why is this not finding sectments?
         $data['item_obj'] = $this->model->get_one_where('url_string', $url_string, 'store_items');
+        //var_dump($data);die(); 
+        // browser debug: array(1) { ["item_obj"]=> bool(false) } 
+        // why is item_obj a boolean?
         $data['view_module'] = 'store_items';
         $data['view_file'] = 'display';
         $this->template('public_defiant', $data);

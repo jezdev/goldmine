@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2020 at 06:57 AM
+-- Generation Time: May 12, 2020 at 02:03 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -104,7 +104,7 @@ CREATE TABLE `store_items` (
 --
 
 INSERT INTO `store_items` (`id`, `url_string`, `item_title`, `item_code`, `item_price`, `item_description`, `item_stock`, `picture`) VALUES
-(1, 'first', 'First', '2DV3YD', '77.00', 'Here we go..', 1, 'watch1.jpg'),
+(1, 'citizen-ecodrive-at901303h', 'Citizen Eco-Drive AT9013-03H', '', '888.00', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus veritatis autem laborum et praesentium porro consequuntur, sequi corporis nisi dolorem, ipsum placeat voluptatem debitis provident eligendi. Doloribus aliquid ab temporibus!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora voluptate consectetur numquam illo esse distinctio nam iusto laudantium repudiandae fuga dolores rerum cumque aspernatur quidem minima dolor labore, atque quasi.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, ex consequuntur dolorem doloribus odio ratione voluptas cum, iure magnam deserunt ipsam fuga soluta commodi a facilis vel modi adipisci temporibus.', 1, 'watch1.jpg'),
 (2, 'second', 'Second', 'DVCQ6A', '100.00', 'Further test...', 1, ''),
 (3, 'three', 'Three', 'EFTDP7', '234.00', 'New desc...', 1, '');
 
@@ -188,7 +188,7 @@ CREATE TABLE `trongate_tokens` (
 --
 
 INSERT INTO `trongate_tokens` (`id`, `token`, `user_id`, `expiry_date`, `code`) VALUES
-(12, 'YLt5pkFMS7LVo_cpgIwECdIPhf3GpIFX', 1, 1589251461, '0');
+(13, 'o4CzoNKGvrlQOehPd9bs-LCl96l8f0Wd', 1, 1589368998, '0');
 
 -- --------------------------------------------------------
 
@@ -341,7 +341,7 @@ ALTER TABLE `trongate_administrators`
 -- AUTO_INCREMENT for table `trongate_tokens`
 --
 ALTER TABLE `trongate_tokens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `trongate_users`

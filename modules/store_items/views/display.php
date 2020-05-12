@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div>
-                <h1><?= $item_obj->item_title ?></h1>
+                <h1><?= $item_obj->item_title; /*var_dump($data);die();*/ ?></h1>
                 <p><b>Item Code:</b>x</p>
                 <p><b>In Stock:</b> <span class="tick">&#10004;</span></p>
                 <p class="price"><span class="smaller">$</span>x</p>
