@@ -3,7 +3,8 @@ class Store_items extends Trongate {
 
     function display() {
         $url_string = $this->url->segment(3);
-        echo $url_string; die();
+        // echo $url_string; die();
+        $data['item_obj'] = $this->model->get_one_where('url_string', $url_string, 'store_items');
         $data['view_module'] = 'store_items';
         $data['view_file'] = 'display';
         $this->template('public_defiant', $data);
