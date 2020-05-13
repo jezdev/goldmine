@@ -19,12 +19,10 @@
             </div>
             <div>
                 <h1><?= $item_obj->item_title ?></h1>
-                <p><b>Item Code:</b> ABC123</p>
-                <p><b>In Stock:</b> <span class="tick">&#10004;</span></p>
-                <p class="price"><span class="smaller">$</span>888.00</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus veritatis autem laborum et praesentium porro consequuntur, sequi corporis nisi dolorem, ipsum placeat voluptatem debitis provident eligendi. Doloribus aliquid ab temporibus!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora voluptate consectetur numquam illo esse distinctio nam iusto laudantium repudiandae fuga dolores rerum cumque aspernatur quidem minima dolor labore, atque quasi.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, ex consequuntur dolorem doloribus odio ratione voluptas cum, iure magnam deserunt ipsam fuga soluta commodi a facilis vel modi adipisci temporibus.</p>
+                <p><b>Item Code:</b> <?= $item_obj->item_code ?></p>
+                <p><b>In Stock:</b> <span class="tick"> <?= $item_obj->in_stock ?></span></p>
+                <p class="price"><span class="smaller">$</span> <?= $item_obj->item_price ?></p>
+                <p>  <?= $item_obj->description ?></p>
             </div>
             <div class="add-to-cart">
                 <p class="price">$888.00</p>
