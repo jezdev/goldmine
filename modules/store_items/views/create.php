@@ -10,21 +10,17 @@
             <label class="w3-text-dark-grey"><b>Item Title</b></label>
             <input type="text" name="item_title" value="<?= $item_title ?>" class="w3-input w3-border w3-sand" placeholder="Enter Item Title">
         </p>
-<!--         <p>
-            <label class="w3-text-dark-grey"><b>Item Code</b></label>
-            <input type="text" name="item_code" value="<?= $item_code ?>" class="w3-input w3-border w3-sand" placeholder="Enter Item Code">
-        </p> -->
+        <p>
+            <label class="w3-text-dark-grey">In Stock</label>
+            <input name="in_stock" class="w3-check" type="checkbox" value="1"<?php if ($in_stock==1) { echo ' checked="checked"'; } ?>>
+        </p>
         <p>
             <label class="w3-text-dark-grey"><b>Item Price</b></label>
             <input type="text" name="item_price" value="<?= $item_price ?>" class="w3-input w3-border w3-sand" placeholder="Enter Item Price">
         </p>
         <p>
-            <label class="w3-text-dark-grey"><b>Item Description</b></label>
-            <textarea name="item_description" class="w3-input w3-border w3-sand" placeholder="Enter Item Description here..."><?= $item_description ?></textarea>
-        </p>
-        <p>
-            <label class="w3-text-dark-grey">Item Stock</label>
-            <input name="item_stock" class="w3-check" type="checkbox" value="1"<?php if ($item_stock==1) { echo ' checked="checked"'; } ?>>
+            <label class="w3-text-dark-grey"><b>Description</b></label>
+            <textarea name="description" class="w3-input w3-border w3-sand" placeholder="Enter Description here..."><?= $description ?></textarea>
         </p>
         <p> 
             <?php 

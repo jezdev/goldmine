@@ -102,7 +102,7 @@ class Store_item_sizes extends Trongate {
 
         if ($submit == 'Submit') {
 
-            $this->validation_helper->set_rules('item_size', 'item size', 'required|min_length[2]|max_length[255]');
+            $this->validation_helper->set_rules('item_size', 'Item Size', 'required|min_length[2]|max_length[255]');
 
             $result = $this->validation_helper->run();
 

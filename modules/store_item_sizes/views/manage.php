@@ -35,7 +35,7 @@
                 </tr>
 
                 <tr class="secondary">
-                    <th>item size</th>
+                    <th>Item Size</th>
                     <th style="width: 20px;">Action</th>
                 </tr>
             </thead>

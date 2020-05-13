@@ -36,9 +36,9 @@
 
                 <tr class="secondary">
                     <th>Item Title</th>
+                    <th>In Stock</th>
                     <th>Item Code</th>
                     <th>Item Price</th>
-                    <th>Item Stock</th>
                     <th style="width: 20px;">Action</th>
                 </tr>
             </thead>
@@ -197,9 +197,9 @@ function getRecords() {
       var editBtn = '<a href="' + recordUrl + '"><button type="button" class="btn btn-xs">View</button></a>';
       var newRow = `<tr>
                         <td>${records[i]['item_title']}</td>
+                        <td>${records[i]['in_stock']}</td>
                         <td>${records[i]['item_code']}</td>
                         <td>${records[i]['item_price']}</td>
-                        <td>${records[i]['item_stock']}</td>
                         <td>${editBtn}</td>
                     </tr>`;
 

@@ -2,7 +2,6 @@
 class Templates extends Trongate {
 
     function public_defiant($data) {
-        // var_dump($data);die();
         load('public_defiant', $data);
     }
 

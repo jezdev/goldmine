@@ -3,13 +3,7 @@ class Store_items extends Trongate {
 
     function display() {
         $url_string = $this->url->segment(3);
-        //var_dump($url_string);die(); 
-        // browser debug output: string(0) "" 
-        // why is this not finding sectments?
-        $data['item_obj'] = $this->model->get_one_where('url_string', $url_string, 'store_items');
-        //var_dump($data);die(); 
-        // browser debug: array(1) { ["item_obj"]=> bool(false) } 
-        // why is item_obj a boolean?
+        echo $url_string; die();
         $data['view_module'] = 'store_items';
         $data['view_file'] = 'display';
         $this->template('public_defiant', $data);
@@ -49,7 +43,7 @@ class Store_items extends Trongate {
         $data['record_name_plural'] = 'store items';
 
         $data['headline'] = 'Manage Store Items';
-        // $data['view_module'] = 'store_items';
+        $data['view_module'] = 'store_items';
         $data['view_file'] = 'manage';
 
         $this->template('admin', $data);
@@ -74,7 +68,7 @@ class Store_items extends Trongate {
             $data['form_location'] = BASE_URL.'store_items/submit/'.$update_id;
             $data['update_id'] = $update_id;
             $data['headline'] = 'Store Item Information';
-            $data['item_stock'] = $this->_boolean_to_words($data['item_stock']);
+            $data['in_stock'] = $this->_boolean_to_words($data['in_stock']);
             $data['picture_uploader_multi_settings'] = $this->_init_picture_uploader_multi_settings();
             $data['view_file'] = 'show';
             $this->template('admin', $data);
@@ -144,8 +138,7 @@ class Store_items extends Trongate {
 
             $this->validation_helper->set_rules('item_title', 'Item Title', 'required|min_length[2]|max_length[255]');
             $this->validation_helper->set_rules('item_price', 'Item Price', 'required|max_length|numeric|greater_than[0]|numeric');
-            $this->validation_helper->set_rules('item_description', 'Item Description', 'required|min_length[2]');
-            $this->validation_helper->set_rules('item_stock', 'Item Stock', '');
+            $this->validation_helper->set_rules('description', 'Description', 'required|min_length[2]');
 
             $result = $this->validation_helper->run();
 
@@ -153,6 +146,8 @@ class Store_items extends Trongate {
 
                 $update_id = $this->url->segment(3);
                 $data = $this->_get_data_from_post();
+                settype($data['in_stock'], 'int');
+                settype($data['item_price'], 'double');
                 if (is_numeric($update_id)) {
                     //update an existing record
                     $this->model->update($update_id, $data, 'store_items');
@@ -216,20 +211,19 @@ class Store_items extends Trongate {
             die();
         } else {
             $data['item_title'] = $store_items->item_title;
+            $data['in_stock'] = $store_items->in_stock;
             $data['item_code'] = $store_items->item_code;
             $data['item_price'] = $store_items->item_price;
-            $data['item_description'] = $store_items->item_description;
-            $data['item_stock'] = $store_items->item_stock;
+            $data['description'] = $store_items->description;
             return $data;
         }
     }
 
     function _get_data_from_post() {
         $data['item_title'] = $this->input('item_title', true);
-        $data['item_code'] = $this->input('item_code', true);
+        $data['in_stock'] = $this->input('in_stock', true);
         $data['item_price'] = $this->input('item_price', true);
-        $data['item_description'] = $this->input('item_description', true);
-        $data['item_stock'] = $this->input('item_stock', true);
+        $data['description'] = $this->input('description', true);
         $data['url_string'] = strtolower(url_title($data['item_title']));
         return $data;
     }
@@ -246,7 +240,7 @@ class Store_items extends Trongate {
     function _prep_output($output) {
         $output['body'] = json_decode($output['body']);
         foreach($output['body'] as $key => $value) {
-            $output['body'][$key] ->item_stock = $this->_boolean_to_words($value->item_stock);
+            $output['body'][$key] ->in_stock = $this->_boolean_to_words($value->in_stock);
         }
 
         $output['body'] = json_encode($output['body']);

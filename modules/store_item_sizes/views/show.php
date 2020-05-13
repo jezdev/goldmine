@@ -46,7 +46,7 @@
                 <h4>Store Item Size Details</h4>
             </div>
             <div class="edit-block-content">
-              <div class="w3-border-bottom"><b>item size:</b> <span class="w3-right w3-text-grey"><?= $item_size ?></span></div>              
+              <div class="w3-border-bottom"><b>Item Size:</b> <span class="w3-right w3-text-grey"><?= $item_size ?></span></div>              
             </div>
         </div>
     </div>

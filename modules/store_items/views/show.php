@@ -47,10 +47,10 @@
             </div>
             <div class="edit-block-content">
               <div class="w3-border-bottom"><b>Item Title:</b> <span class="w3-right w3-text-grey"><?= $item_title ?></span></div>
+              <div class="w3-border-bottom"><b>In Stock:</b> <span class="w3-right w3-text-grey"><?= $in_stock ?></span></div>
               <div class="w3-border-bottom"><b>Item Code:</b> <span class="w3-right w3-text-grey"><?= $item_code ?></span></div>
               <div class="w3-border-bottom"><b>Item Price:</b> <span class="w3-right w3-text-grey"><?= $item_price ?></span></div>
-              <div class="w3-border-bottom"><b>Item Description:</b> <span class="w3-text-grey"><br><?= nl2br($item_description) ?></span></div>
-              <div class="w3-border-bottom"><b>Item Stock:</b> <span class="w3-right w3-text-grey"><?= $item_stock ?></span></div>              
+              <div class="w3-border-bottom"><b>Description:</b> <span class="w3-text-grey"><br><?= nl2br($description) ?></span></div>              
             </div>
         </div>
     </div>
@@ -59,8 +59,6 @@
 
 
 <?= Modules::run('picture_uploader_multi/_draw_summary_panel', $update_id, $picture_uploader_multi_settings) ?>
-
-
 
 
 <?= Modules::run('associated_store_items_and_store_item_colors/_draw_association_info', $token) ?>
@@ -280,8 +278,6 @@ window.onload = function() {
     //attempt to populate relationship panels on the page
     populateAssociationInfo('associated_store_items_and_store_item_colors');
     populateAssociationInfo('associated_store_items_and_store_item_sizes');
-
-
 
 
 }

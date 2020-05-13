@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2020 at 02:03 PM
+-- Generation Time: May 13, 2020 at 06:47 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -39,12 +39,9 @@ CREATE TABLE `associated_store_items_and_store_item_colors` (
 --
 
 INSERT INTO `associated_store_items_and_store_item_colors` (`id`, `store_items_id`, `store_item_colors_id`) VALUES
-(1, 1, 2),
-(2, 1, 3),
-(4, 1, 5),
-(6, 1, 4),
-(7, 2, 2),
-(8, 3, 2);
+(1, 3, 2),
+(2, 3, 3),
+(3, 3, 5);
 
 -- --------------------------------------------------------
 
@@ -63,8 +60,8 @@ CREATE TABLE `associated_store_items_and_store_item_sizes` (
 --
 
 INSERT INTO `associated_store_items_and_store_item_sizes` (`id`, `store_items_id`, `store_item_sizes_id`) VALUES
-(1, 2, 2),
-(2, 2, 1);
+(1, 3, 2),
+(2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -74,12 +71,12 @@ INSERT INTO `associated_store_items_and_store_item_sizes` (`id`, `store_items_id
 
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
-  `comment` text NOT NULL,
-  `date_created` int(11) NOT NULL DEFAULT 0,
-  `user_id` int(11) NOT NULL,
-  `target_table` varchar(125) NOT NULL,
-  `update_id` int(11) NOT NULL,
-  `code` varchar(6) NOT NULL DEFAULT ''
+  `comment` text DEFAULT NULL,
+  `date_created` int(11) DEFAULT 0,
+  `user_id` int(11) DEFAULT NULL,
+  `target_table` varchar(125) DEFAULT NULL,
+  `update_id` int(11) DEFAULT NULL,
+  `code` varchar(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -91,11 +88,11 @@ CREATE TABLE `comments` (
 CREATE TABLE `store_items` (
   `id` int(11) NOT NULL,
   `url_string` varchar(255) DEFAULT NULL,
-  `item_title` varchar(255) NOT NULL,
-  `item_code` varchar(255) NOT NULL,
-  `item_price` decimal(7,2) NOT NULL,
-  `item_description` text NOT NULL,
-  `item_stock` tinyint(1) NOT NULL,
+  `item_title` varchar(255) DEFAULT NULL,
+  `in_stock` tinyint(1) DEFAULT NULL,
+  `item_code` varchar(255) DEFAULT NULL,
+  `item_price` decimal(7,2) DEFAULT NULL,
+  `description` text DEFAULT NULL,
   `picture` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -103,10 +100,9 @@ CREATE TABLE `store_items` (
 -- Dumping data for table `store_items`
 --
 
-INSERT INTO `store_items` (`id`, `url_string`, `item_title`, `item_code`, `item_price`, `item_description`, `item_stock`, `picture`) VALUES
-(1, 'citizen-ecodrive-at901303h', 'Citizen Eco-Drive AT9013-03H', '', '888.00', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus veritatis autem laborum et praesentium porro consequuntur, sequi corporis nisi dolorem, ipsum placeat voluptatem debitis provident eligendi. Doloribus aliquid ab temporibus!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora voluptate consectetur numquam illo esse distinctio nam iusto laudantium repudiandae fuga dolores rerum cumque aspernatur quidem minima dolor labore, atque quasi.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, ex consequuntur dolorem doloribus odio ratione voluptas cum, iure magnam deserunt ipsam fuga soluta commodi a facilis vel modi adipisci temporibus.', 1, 'watch1.jpg'),
-(2, 'second', 'Second', 'DVCQ6A', '100.00', 'Further test...', 1, ''),
-(3, 'three', 'Three', 'EFTDP7', '234.00', 'New desc...', 1, '');
+INSERT INTO `store_items` (`id`, `url_string`, `item_title`, `in_stock`, `item_code`, `item_price`, `description`, `picture`) VALUES
+(1, 'first', 'First', 1, NULL, '88.00', 'Here we go...', 'watch1.jpg'),
+(3, 'citizen-ecodrive-at901303h', 'Citizen Eco-Drive AT9013-03H', 1, '7QUFKW', '888.00', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus veritatis autem laborum et praesentium porro consequuntur, sequi corporis nisi dolorem, ipsum placeat voluptatem debitis provident eligendi. Doloribus aliquid ab temporibus!\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora voluptate consectetur numquam illo esse distinctio nam iusto laudantium repudiandae fuga dolores rerum cumque aspernatur quidem minima dolor labore, atque quasi.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, ex consequuntur dolorem doloribus odio ratione voluptas cum, iure magnam deserunt ipsam fuga soluta commodi a facilis vel modi adipisci temporibus.', 'watch1.jpg');
 
 -- --------------------------------------------------------
 
@@ -157,9 +153,9 @@ INSERT INTO `store_item_sizes` (`id`, `item_size`) VALUES
 
 CREATE TABLE `trongate_administrators` (
   `id` int(11) NOT NULL,
-  `username` varchar(65) NOT NULL,
-  `password` varchar(60) NOT NULL,
-  `trongate_user_id` int(11) NOT NULL
+  `username` varchar(65) DEFAULT NULL,
+  `password` varchar(60) DEFAULT NULL,
+  `trongate_user_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -177,10 +173,10 @@ INSERT INTO `trongate_administrators` (`id`, `username`, `password`, `trongate_u
 
 CREATE TABLE `trongate_tokens` (
   `id` int(11) NOT NULL,
-  `token` varchar(125) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `expiry_date` int(11) NOT NULL,
-  `code` varchar(3) NOT NULL DEFAULT '0'
+  `token` varchar(125) DEFAULT NULL,
+  `user_id` int(11) DEFAULT 0,
+  `expiry_date` int(11) DEFAULT NULL,
+  `code` varchar(3) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -188,7 +184,7 @@ CREATE TABLE `trongate_tokens` (
 --
 
 INSERT INTO `trongate_tokens` (`id`, `token`, `user_id`, `expiry_date`, `code`) VALUES
-(13, 'o4CzoNKGvrlQOehPd9bs-LCl96l8f0Wd', 1, 1589368998, '0');
+(1, 'Ul3S6MxodlQ6c-yz-ZywGs3rg2D29lao', 1, 1589424405, '0');
 
 -- --------------------------------------------------------
 
@@ -199,7 +195,7 @@ INSERT INTO `trongate_tokens` (`id`, `token`, `user_id`, `expiry_date`, `code`) 
 CREATE TABLE `trongate_users` (
   `id` int(11) NOT NULL,
   `code` varchar(32) DEFAULT NULL,
-  `user_level_id` int(11) NOT NULL DEFAULT 0
+  `user_level_id` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -207,7 +203,7 @@ CREATE TABLE `trongate_users` (
 --
 
 INSERT INTO `trongate_users` (`id`, `code`, `user_level_id`) VALUES
-(1, 'L4oLs4rlsslKgTwAXonMSH8ATmpNtmfi', 1);
+(1, 'fmhFimHcoNMWtA1iFrvQhkLTfVxrs9kf', 1);
 
 -- --------------------------------------------------------
 
@@ -217,7 +213,7 @@ INSERT INTO `trongate_users` (`id`, `code`, `user_level_id`) VALUES
 
 CREATE TABLE `trongate_user_levels` (
   `id` int(11) NOT NULL,
-  `level_title` varchar(125) NOT NULL DEFAULT ''
+  `level_title` varchar(125) DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -299,7 +295,7 @@ ALTER TABLE `trongate_user_levels`
 -- AUTO_INCREMENT for table `associated_store_items_and_store_item_colors`
 --
 ALTER TABLE `associated_store_items_and_store_item_colors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `associated_store_items_and_store_item_sizes`
@@ -341,7 +337,7 @@ ALTER TABLE `trongate_administrators`
 -- AUTO_INCREMENT for table `trongate_tokens`
 --
 ALTER TABLE `trongate_tokens`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `trongate_users`

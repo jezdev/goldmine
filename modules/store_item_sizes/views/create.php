@@ -7,8 +7,8 @@
     <form class="w3-container" action="<?= $form_location ?>" method="post">
 
         <p>
-            <label class="w3-text-dark-grey"><b>item size</b></label>
-            <input type="text" name="item_size" value="<?= $item_size ?>" class="w3-input w3-border w3-sand" placeholder="Enter item size">
+            <label class="w3-text-dark-grey"><b>Item Size</b></label>
+            <input type="text" name="item_size" value="<?= $item_size ?>" class="w3-input w3-border w3-sand" placeholder="Enter Item Size">
         </p>
         <p> 
             <?php 
